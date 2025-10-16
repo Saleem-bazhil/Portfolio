@@ -84,7 +84,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <DisclosurePanel className="sm:hidden bg-background/30 backdrop-blur-md">
-        <div className="space-y-1 px-2 pt-2 pb-3">
+        <div className="space-y-1 px-2 pt-2 pb-3 tagesschrift-regular tracking-widest">
           {navigation.map((item) => (
             <DisclosureButton
               key={item.name}

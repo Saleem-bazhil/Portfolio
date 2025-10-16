@@ -5,7 +5,7 @@ const WinterSnow = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    const numFlakes = 100; // number of glowing lights
+    const numFlakes = 100; 
     const flakes = [];
     const container = containerRef.current;
 
@@ -13,8 +13,8 @@ const WinterSnow = () => {
       const flake = document.createElement("div");
       flake.classList.add("snowflake");
 
-      const size = Math.random() * 2 + 1; // slightly larger base size (1–3px)
-      const glowSize = Math.random() * 15 + 8; // stronger glow effect
+      const size = Math.random() * 2 + 1;
+      const glowSize = Math.random() * 15 + 8; 
 
       Object.assign(flake.style, {
         width: `${size}px`,
@@ -27,14 +27,14 @@ const WinterSnow = () => {
         zIndex: 0,
         opacity: Math.random() * 0.8 + 0.2,
         pointerEvents: "none",
-        boxShadow: `0 0 ${glowSize}px rgba(173, 216, 255, 0.95)`, // bluish-white glow
+        boxShadow: `0 0 ${glowSize}px rgba(173, 216, 255, 0.95)`, 
         filter: "blur(1px)",
       });
 
       container.appendChild(flake);
       flakes.push(flake);
 
-      // Floating/falling animation ❄️
+      // Floating/falling animation 
       gsap.to(flake, {
         y: window.innerHeight + 10,
         x: `+=${Math.random() * 100 - 50}`,
@@ -44,7 +44,7 @@ const WinterSnow = () => {
         delay: Math.random() * 10,
       });
 
-      // Twinkle animation ✨
+      // Twinkle animation 
       gsap.to(flake, {
         opacity: gsap.utils.random(0.2, 1),
         duration: gsap.utils.random(1, 2),
@@ -68,7 +68,7 @@ const WinterSnow = () => {
         width: "100%",
         height: "100%",
         overflow: "hidden",
-        zIndex: 0, // stay in background
+        zIndex: 0, 
         pointerEvents: "none",
       }}
     />

@@ -27,7 +27,7 @@ const Contact = () => {
       from_name: values.name,
       from_email: values.email,
       message: values.message,
-      to_name: "Your Name", // matches your EmailJS template variable
+      to_name: "Your Name",
     };
 
     emailjs

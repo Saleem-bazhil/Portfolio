@@ -5,8 +5,7 @@ import myimg from "../assets/Profile.jpg";
 
 const Hero = () => {
   const techRef = useRef(null);
-  const buttonsRef = useRef([]); // Ref for all hero buttons
-
+  const buttonsRef = useRef([]); 
   useEffect(() => {
     const techItems = techRef.current?.querySelectorAll(".tech-item");
 

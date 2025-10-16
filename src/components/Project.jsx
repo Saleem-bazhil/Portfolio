@@ -12,8 +12,6 @@ const Project = () => {
         <p className="text-center text-muted-foreground text-lg sm:text-xl max-w-3xl mx-auto mb-16">
           A selection of recent work showcasing modern web technologies and clean design.
         </p>
-
-        {/* ✅ Corrected grid class (typo: lg:grid-col-3 → lg:grid-cols-3) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-6 md:m-0">
           {project.map((proj, index) => (
             <div

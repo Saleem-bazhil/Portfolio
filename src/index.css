@@ -5,41 +5,37 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme variables */
 @theme {
   --font-bebas: "Bebas Neue", san-serif;
 
   /* Custom colors */
-  --color-choco: #795548; /* Chocolate */
-  --color-blue: #06b6d4;  /* Cyan/Blue accent */
+  --color-choco: #795548;
+  --color-blue: #06b6d4;
+  /* Cyan/Blue accent */
 
   /* Dark theme - Deep space backgrounds */
-  --color-background: #0b0e14;         /* hsl(230 35% 7%) */
-  --color-foreground: #fafafa;         /* hsl(0 0% 98%) */
+  --color-background: #0b0e14;
+  --color-foreground: #fafafa;
+  --color-card: #12151e;
+  --color-card-foreground: #fafafa;
+  --color-popover: #12151e;
+  --color-popover-foreground: #fafafa;
 
-  /* Cards */
-  --color-card: #12151e;               /* hsl(230 25% 12%) */
-  --color-card-foreground: #fafafa;    /* hsl(0 0% 98%) */
-
-  --color-popover: #12151e;            /* hsl(230 25% 12%) */
-  --color-popover-foreground: #fafafa; /* hsl(0 0% 98%) */
-
-  /* Accent colors */
-  --color-primary: #00e5ff;            /* hsl(187 100% 50%) */
-  --color-primary-foreground: #0b0e14; /* hsl(230 35% 7%) */
-  --color-secondary: #ff00a8;          /* hsl(320 100% 50%) */
-  --color-secondary-foreground: #0b0e14; /* hsl(230 35% 7%) */
-  --color-muted: #1f2430;              /* hsl(230 20% 18%) */
-  --color-muted-foreground: #8892a0;   /* hsl(220 10% 60%) */
-  --color-accent: #00e5ff;             /* hsl(187 100% 50%) */
-  --color-accent-foreground: #0b0e14;  /* hsl(230 35% 7%) */
-  --color-destructive: #f04444;        /* hsl(0 84% 60%) */
-  --color-destructive-foreground: #fafafa; /* hsl(0 0% 98%) */
+  --color-primary: #00e5ff;
+  --color-primary-foreground: #0b0e14;
+  --color-secondary: #ff00a8;
+  --color-secondary-foreground: #0b0e14;
+  --color-muted: #1f2430;
+  --color-muted-foreground: #8892a0;
+  --color-accent: #00e5ff;
+  --color-accent-foreground: #0b0e14;
+  --color-destructive: #f04444;
+  --color-destructive-foreground: #fafafa;
 
   /* Borders & inputs */
-  --color-border: #232833;             /* hsl(230 20% 20%) */
-  --color-input: #232833;              /* hsl(230 20% 20%) */
-  --color-ring: #00e5ff;               /* hsl(187 100% 50%) */
+  --color-border: #232833;
+  --color-input: #232833;
+  --color-ring: #00e5ff;
   --color-radius: 0.75rem;
 
   /* Gradients */
@@ -48,7 +44,8 @@
   --gradient-card: linear-gradient(135deg, #12151e, #0e111a);
 
   /* Shadows */
-  --shadow-neon: 0 0 20px #00e5ff4d; /* 30% opacity */
+  --shadow-neon: 0 0 20px #00e5ff4d;
+  /* 30% opacity */
   --shadow-neon-hover: 0 0 30px #00e5ff80, 0 0 60px #ff00a84d;
   --shadow-card: 0 8px 32px #00000066;
 
@@ -90,10 +87,10 @@
 
 @layer utilities {
   .bebas-neue-regular {
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
 
   .font-Agbalumo {
     font-family: "Agbalumo", system-ui;
@@ -113,19 +110,16 @@
   /* Navigation links */
   .nav-link {
     @apply relative px-3 py-2 text-sm font-medium transition-all text-muted-foreground;
-    /* color: hsl(var(--muted-foreground)); */
   }
 
   .nav-link::after {
     content: '';
     @apply absolute left-0 bottom-0 h-[2px] transition-all bg-primary;
     width: 0%;
-    /* background-color: hsl(var(--primary)); */
   }
 
   .nav-link:hover {
     @apply text-primary
-    /* color: hsl(var(--primary)); */
   }
 
   .nav-link:hover::after {
@@ -137,18 +131,19 @@
   .btn {
     @apply px-4 py-1 rounded-md lg:rounded-xl border text-primary border-primary transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground;
   }
-.input-box{
-  @apply w-full py-2 px-4 rounded-xl bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200
-}
 
-.gradient-background{
-  background: var(--gradient-primary);
-  transition: var(--transition-smooth);
+  .input-box {
+    @apply w-full py-2 px-4 rounded-xl bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-200
+  }
 
-}
+  .gradient-background {
+    background: var(--gradient-primary);
+    transition: var(--transition-smooth);
+
+  }
+
   /* Gradient text */
   .gradient-text {
-    /* @apply bg-gradient-primary */
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -176,27 +171,19 @@
   }
 }
 
-/* Custom xs breakpoint: 360px and up */
-@media (max-width: 372px)  {
-  #hero{
+@media (max-width: 372px) {
+  #hero {
     @apply mt-16
   }
-  /* Hero section padding */
 
-  /* Hero Text */
-
-  /* Tech items */
   .tech-item {
     font-size: 1.1rem;
     line-height: 2.5rem;
   }
 
-  /* Hero Buttons */
-
-  /* Hero Image */
   .circle img {
-    width: 18rem !important; /* 288px */
-    height: 18rem !important; /* 288px */
+    width: 18rem !important;
+    height: 18rem !important;
   }
 
 }

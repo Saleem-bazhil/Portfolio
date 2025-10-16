@@ -11,8 +11,6 @@ const About = () => {
           I build modern web applications with a focus on user experience,
           performance, and pixel-perfect design.
         </p>
-
-        {/* Small cards from skills array */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8 lg:p-6 mb-16">
           {skillHighlights.map((ski, index) => (
             <div

@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ArrowRight } from "lucide-react";
 import myimg from "../assets/profile (4).png";
+import resume from "../assets/resume.pdf";
 
 const Hero = () => {
   const techRef = useRef(null);
-  const buttonsRef = useRef([]); 
+  const buttonsRef = useRef([]);
   useEffect(() => {
     const techItems = techRef.current?.querySelectorAll(".tech-item");
 
@@ -83,27 +84,26 @@ const Hero = () => {
 
             {/* Hero Buttons */}
             <div className="flex gap-5 lg:ms-2 justify-center lg:justify-start grid grid-cols-1 md:grid-cols-3 hero-button">
-              {["View Projects", "Download Resume"].map((text, index) => (
+              {/* View Projects Button */}
+              <a href="#project" className="w-full">
                 <button
-                  key={index}
-                  ref={(el) => (buttonsRef.current[index] = el)}
-                  className={`flex justify-center items-center px-5 py-3 rounded-xl font-heading text-lg tracking-wide ${
-                    text === "View Projects"
-                      ? "bg-primary text-primary-foreground hover:bg-primary/90 neon-glow bebas-neue-regular"
-                      : "btn bebas-neue-regular"
-                  }`}
+                  ref={(el) => (buttonsRef.current[0] = el)}
+                  className="flex justify-center items-center px-5 py-3 rounded-xl font-heading text-lg tracking-wide w-full bg-primary text-primary-foreground hover:bg-primary/90 neon-glow bebas-neue-regular"
                 >
-                  <a
-                    href="#project"
-                    className="flex items-center w-full justify-center"
-                  >
-                    {text === "View Projects" && (
-                      <ArrowRight className="mr-2" />
-                    )}
-                    {text}
-                  </a>
+                  <ArrowRight className="mr-2" />
+                  View Projects
                 </button>
-              ))}
+              </a>
+
+              {/* Download Resume Button */}
+              <a href={resume} download className="w-full">
+                <button
+                  ref={(el) => (buttonsRef.current[1] = el)}
+                  className="flex justify-center items-center px-5 py-3 rounded-xl font-heading text-lg tracking-wide w-full btn bebas-neue-regular"
+                >
+                  Download Resume
+                </button>
+              </a>
             </div>
           </div>
 

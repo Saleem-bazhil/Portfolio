@@ -74,7 +74,7 @@ export default function Navbar() {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <a
               href="#contact"
-              className="btn tagesschrift-regular tracking-widest"
+              className="px-4 lg:py-2 py-1 rounded-md lg:rounded-xl border text-primary border-primary transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground tagesschrift-regular tracking-widest"
             >
               Contact
             </a>
@@ -83,8 +83,9 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
+      {/* Mobile menu */}
       <DisclosurePanel className="sm:hidden bg-background/30 backdrop-blur-md">
-        <div className="space-y-1 px-2 pt-2 pb-3 tagesschrift-regular tracking-widest">
+        <div className="space-y-1 px-2 pt-2 pb-3">
           {navigation.map((item) => (
             <DisclosureButton
               key={item.name}
@@ -92,7 +93,7 @@ export default function Navbar() {
               href={item.href}
               aria-current={item.current ? "page" : undefined}
               className={classNames(
-                "nav-link block rounded-md px-3 py-2 text-base font-medium",
+                "nav-link block rounded-md px-3 py-2 text-base font-medium tagesschrift-regular tracking-widest", 
                 item.current ? "nav-link-active" : ""
               )}
             >

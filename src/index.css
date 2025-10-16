@@ -129,7 +129,7 @@
 
   /* Buttons */
   .btn {
-    @apply px-4 py-1 rounded-md lg:rounded-xl border text-primary border-primary transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground;
+    @apply px-4 lg:py-3 py-2 rounded-md lg:rounded-xl border text-primary border-primary transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground;
   }
 
   .input-box {

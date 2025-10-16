@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ArrowRight } from "lucide-react";
-import myimg from "../assets/Profile.jpg";
+import myimg from "../assets/profile.jpg";
 
 const Hero = () => {
   const techRef = useRef(null);

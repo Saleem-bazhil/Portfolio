@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -10,19 +7,26 @@ import About from './components/About'
 import Project from './components/Project'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ScrollShowcase from './components/scrollanimation/ScrollShowcase'
+import BackendShowcase from './components/scrollanimation/BackendShowcase'
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
-
   return (
     <>
-    <WinterSnow/>
-    <Navbar/>
-    <Hero/>
-    <Skills/>
-    <About/>
-    <Project/>
-    <Contact/>
-    <Footer/>
+     <BrowserRouter>
+      {/* <WinterSnow/> */}
+      <Navbar />
+      <Hero />
+       <ScrollShowcase />
+       <BackendShowcase/>
+
+      <Skills />
+      <About />
+      <Project />
+      <Contact />
+      <Footer />
+      </BrowserRouter>
     </>
   )
 }

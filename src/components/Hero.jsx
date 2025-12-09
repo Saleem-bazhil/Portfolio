@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import { ArrowRight } from "lucide-react";
 import myimg from "../assets/profile (4).png";
 import resume from "../assets/resume.pdf";
+import { BackgroundBeams } from "./ui/background-beams";
+import { TextType } from "./ui/TextType";
 
 const Hero = () => {
   const techRef = useRef(null);
@@ -48,16 +50,32 @@ const Hero = () => {
 
   return (
     <section
-      className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 bg-gradient-dark"
+      className="min-h-screen flex items-center px-4 sm:px-6 lg:px-0 bg-gradient-dark"
       id="hero"
     >
+      <BackgroundBeams className="absolute inset-0 -z-10" />
+
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:px-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:px-8 items-center">
           {/* Hero Text */}
           <div className="text-center lg:text-left hero-text order-2 lg:order-1 lg:ps-8">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading mb-4 gradient-text leading-tight">
-              Saleem Bazhil
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading lg:mb-4 gradient-text leading-tight">
+              <span className="inline-block min-h-[120px] whitespace-nowrap  ">
+                <TextType
+                  text={[
+                    "Saleem Bazhil",
+                    "Full Stack Developer", // Fixed spelling (was "Develope")
+                    "React Developer",
+                    "Django Developer",
+                  ]}
+                  typingSpeed={50} // Faster, smoother typing
+                  pauseDuration={2000} // Holds for 2 seconds so it's readable
+                  className="gradient-text text-center"
+                  showCursor={true}
+                />
+              </span>
             </h1>
+
             <p className="flex justify-center lg:justify-start items-center text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-4 lg:ms-0 font-light gap-2 tagesschrift-regular">
               Full Stack Developer |{" "}
               <span className="relative h-10 lg:w-40 w-20 overflow-hidden">
@@ -108,7 +126,7 @@ const Hero = () => {
           </div>
 
           {/* Hero Image */}
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2 lg:me-18">
+          <div className="flex justify-center lg:justify-center order-1 lg:order-2 lg:me-0">
             <div className="relative group circle ">
               <div className="absolute inset-0 gradient-background rounded-full blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
               <div className="relative rounded-full p-1 gradient-background">

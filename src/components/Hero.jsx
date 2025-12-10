@@ -7,49 +7,56 @@ import { BackgroundBeams } from "./ui/background-beams";
 import { TextType } from "./ui/TextType";
 
 const Hero = () => {
+  const heroRef = useRef(null);
   const techRef = useRef(null);
   const buttonsRef = useRef([]);
+
   useEffect(() => {
-    const techItems = techRef.current?.querySelectorAll(".tech-item");
+    const ctx = gsap.context(() => {
+      const techItems = techRef.current?.querySelectorAll(".tech-item");
 
-    // Animate hero text and image
-    gsap.fromTo(
-      [".hero-text h1", ".hero-text p", ".circle"],
-      { y: 60, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.out" }
-    );
-
-    // Animate buttons
-    if (buttonsRef.current.length) {
+      // Animate hero text and image
       gsap.fromTo(
-        buttonsRef.current,
-        { y: 5, opacity: 0, scale: 0.95 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1.5,
-          ease: "power2.out",
-          stagger: 0.2,
-          delay: 1.2,
-        }
+        [".hero-text h1", ".hero-text p", ".circle"],
+        { y: 60, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.out" }
       );
-    }
 
-    // Animate tech items vertical scroll
-    if (techItems) {
-      gsap.to(techRef.current, {
-        y: -80,
-        duration: 8,
-        ease: "power2.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
-    }
+      // Animate buttons
+      if (buttonsRef.current.length) {
+        gsap.fromTo(
+          buttonsRef.current,
+          { y: 5, opacity: 0, scale: 0.95 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1.5,
+            ease: "power2.out",
+            stagger: 0.2,
+            delay: 1.2,
+          }
+        );
+      }
+
+      // Animate tech items vertical scroll
+      if (techItems) {
+        gsap.to(techRef.current, {
+          y: -80,
+          duration: 8,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+      }
+    }, heroRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <section
+      ref={heroRef}
       className="min-h-screen flex items-center px-4 sm:px-6 lg:px-0 bg-gradient-dark"
       id="hero"
     >
@@ -60,16 +67,16 @@ const Hero = () => {
           {/* Hero Text */}
           <div className="text-center lg:text-left hero-text order-2 lg:order-1 lg:ps-8">
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading lg:mb-4 gradient-text leading-tight">
-              <span className="inline-block min-h-[120px] whitespace-nowrap  ">
+              <span className="inline-block min-h-[120px] whitespace-nowrap">
                 <TextType
                   text={[
                     "Saleem Bazhil",
-                    "Full Stack Developer", // Fixed spelling (was "Develope")
+                    "Full Stack Developer",
                     "React Developer",
                     "Django Developer",
                   ]}
-                  typingSpeed={50} // Faster, smoother typing
-                  pauseDuration={2000} // Holds for 2 seconds so it's readable
+                  typingSpeed={50}
+                  pauseDuration={2000}
                   className="gradient-text text-center"
                   showCursor={true}
                 />
@@ -96,12 +103,13 @@ const Hero = () => {
                 </span>
               </span>
             </p>
+
             <p className="flex items-center text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-8 font-light gap-2 tagesschrift-regular">
               | Building modern, scalable web applications.
             </p>
 
             {/* Hero Buttons */}
-            <div className="flex gap-5 lg:ms-2 justify-center lg:justify-start grid grid-cols-1 md:grid-cols-3 hero-button">
+            <div className="flex gap-5 lg:ms-2 justify-center lg:justify-start hero-button">
               {/* View Projects Button */}
               <a href="#project" className="w-full">
                 <button
@@ -127,12 +135,16 @@ const Hero = () => {
 
           {/* Hero Image */}
           <div className="flex justify-center lg:justify-center order-1 lg:order-2 lg:me-0">
-            <div className="relative group circle ">
-              <div className="absolute inset-0 gradient-background rounded-full blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
+            <div className="relative group circle">
+              <div className="absolute inset-0 gradient-background rounded-full blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-300" />
               <div className="relative rounded-full p-1 gradient-background">
                 <img
                   src={myimg}
-                  alt="Alex Chen - Full Stack Developer"
+                  alt="Saleem Bazhil - Full Stack Developer"
+                  width={384}          // matches lg:w-96
+                  height={384}         // matches lg:h-96
+                  loading="eager"      // 👈 tell browser this is LCP
+                  fetchPriority="high" // 👈 prioritize this image
                   className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full object-cover border-4 border-background"
                 />
               </div>

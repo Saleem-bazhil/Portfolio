@@ -1,6 +1,8 @@
+// src/components/Logo.jsx
+import { memo } from "react";
 import profileImg from "../../assets/profile (4).png";
 
-export default function Logo({ className = "", style, ...props }) {
+function LogoComponent({ className = "", style, ...props }) {
   return (
     <img
       src={profileImg}
@@ -14,3 +16,6 @@ export default function Logo({ className = "", style, ...props }) {
     />
   );
 }
+
+const Logo = memo(LogoComponent);
+export default Logo;

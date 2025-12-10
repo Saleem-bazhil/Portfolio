@@ -1,19 +1,27 @@
 // src/components/BackendShowcase.jsx
+import { memo } from "react";
 import BackendAnimation from "../ui/BackendAnimation";
 import { ChevronsDown } from "lucide-react";
 import Galaxy from "../ui/Galaxy";
 
-export default function BackendShowcase() {
+const BACKEND_TAGS = [
+  "RESTful APIs & JWT Authentication",
+  "PostgreSQL & DB Schema Design",
+  "Caching & Task Queues (Redis, Celery)",
+  "Linux & VPS Production Deployment",
+];
+
+function BackendShowcaseComponent() {
   return (
     <section
       id="backend"
-      className="relative w-full h-screen overflow-hidden bg-[#04130f] z-0"
+      className="relative w-full h-screen overflow-hidden bg-[#020b0a] z-0"
     >
       {/* 🌌 Galaxy background */}
       <div className="absolute inset-0 -z-30">
         <Galaxy
-          mouseRepulsion={true}
-          mouseInteraction={true}
+          mouseRepulsion
+          mouseInteraction
           density={1.4}
           glowIntensity={0.55}
           saturation={0.9}
@@ -21,25 +29,46 @@ export default function BackendShowcase() {
         />
       </div>
 
-      {/* 🧊 3D Canvas */}
-      <div className="absolute inset-0 -z-20 pointer-events-none">
-        <BackendAnimation />
+      {/* ✨ Overlays + Glows (now UNDER the 3D canvas) */}
+      <div className="pointer-events-none absolute inset-0 -z-20">
+        {/* Left: very soft dark gradient over background only */}
+        <div
+          className="
+            absolute inset-y-0 left-0
+            w-full md:w-[48%]
+            bg-gradient-to-r
+            from-[#020617]/28 via-[#020617]/10 to-transparent
+          "
+        />
+
+        {/* Right: stronger darkening behind text for readability */}
+        <div
+          className="
+            absolute inset-y-0 right-0
+            w-[40%]
+            bg-gradient-to-l
+            from-black/70 via-black/40 to-transparent
+          "
+        />
+
+        {/* Soft color glows */}
+        <div className="absolute -left-28 top-6 h-72 w-72 rounded-full bg-emerald-400/18 blur-3xl" />
+        <div className="absolute -left-16 bottom-[-6rem] h-80 w-80 rounded-full bg-teal-500/14 blur-[90px]" />
+        <div className="absolute right-[-4rem] top-24 h-64 w-64 rounded-full bg-sky-500/14 blur-[85px]" />
       </div>
 
-      {/* ✨ Glows */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-28 top-6 h-72 w-72 rounded-full bg-emerald-400/18 blur-3xl" />
-        <div className="absolute -left-16 bottom-[-6rem] h-80 w-80 rounded-full bg-teal-500/12 blur-[90px]" />
-        <div className="absolute right-[-4rem] top-24 h-64 w-64 rounded-full bg-sky-500/12 blur-[85px]" />
+      {/* 🧊 3D Canvas – now ABOVE overlays so cubes stay bright */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <BackendAnimation />
       </div>
 
       {/* 📝 Text + layout */}
       <div className="pointer-events-none absolute inset-0 flex z-10">
-        {/* LEFT: space for 3D (a bit more than half so ring has room) */}
-        <div className="hidden md:block md:w-[52%]" />
+        {/* LEFT: space for 3D */}
+        <div className="hidden md:block md:w-[48%]" />
 
         {/* RIGHT: text */}
-        <div className="pointer-events-auto flex items-center w-full md:w-[48%] px-6 sm:px-10 lg:px-16 pt-24 pb-10">
+        <div className="pointer-events-auto flex items-center w-full md:w-[52%] px-6 sm:px-10 lg:px-16 pt-24 pb-10">
           <div className="group max-w-xl space-y-4 sm:space-y-5 text-left">
             <div className="flex items-center gap-3">
               <span className="h-px w-10 bg-gradient-to-r from-emerald-400 to-teal-400" />
@@ -63,12 +92,7 @@ export default function BackendShowcase() {
             </p>
 
             <div className="flex flex-wrap gap-2 pt-3 text-[11px] sm:text-[12px] text-slate-300/90">
-              {[
-                "RESTful APIs & JWT Authentication",
-                "PostgreSQL & DB Schema Design",
-                "Caching & Task Queues (Redis, Celery)",
-                "Linux & VPS Production Deployment",
-              ].map((item) => (
+              {BACKEND_TAGS.map((item) => (
                 <span
                   key={item}
                   className="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700/70 backdrop-blur shadow-[0_0_20px_rgba(15,23,42,0.75)] hover:-translate-y-0.5 transition-transform"
@@ -95,3 +119,6 @@ export default function BackendShowcase() {
     </section>
   );
 }
+
+const BackendShowcase = memo(BackendShowcaseComponent);
+export default BackendShowcase;

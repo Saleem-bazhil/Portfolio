@@ -288,3 +288,63 @@
     @apply bg-background text-foreground;
   }
 }
+/* Smooth and GPU-friendly tweaks for LogoLoop + cards */
+
+/* card base */
+.skill-card {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(4px);
+  transition: transform 300ms cubic-bezier(.22,.98,.42,.99), box-shadow 300ms ease;
+  will-change: transform, opacity;
+  border-radius: 12px;
+}
+
+/* small, cheap shadow and lift */
+.skill-card:hover,
+.skill-card:focus-within {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(2,6,23,0.5);
+}
+
+/* icon smoothing (GPU) */
+.skill-card svg {
+  transition: transform 260ms ease, filter 260ms ease;
+  will-change: transform, filter;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
+}
+
+/* loop track improvements */
+.logoloop__track {
+  display: flex;
+  align-items: center;
+  gap: var(--logoloop-gap, 32px);
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* reduce fade overlay width so edges stay visible */
+.logoloop--smooth::before,
+.logoloop--smooth::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4%;
+  pointer-events: none;
+  /* background: linear-gradient(90deg, rgba(2,6,23,1), rgba(2,6,23,0)); */
+  opacity: 0.95;
+  z-index: 8;
+}
+.logoloop--smooth::before { left: 0; }
+.logoloop--smooth::after { right: 0; transform: rotate(180deg); }
+
+/* reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .skill-card,
+  .skill-card svg,
+  .logoloop__track {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

@@ -162,6 +162,20 @@ function ScrollShowcaseComponent() {
           </span>
         </div>
       </div>
+      {/* Full-bleed decorative seam — keeps starfield visually continuous */}
+<div aria-hidden="true"
+  className="absolute left-0 right-0 bottom-0 z-0 pointer-events-none -translate-y-[1px]">
+
+  <div className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2
+                  bg-gradient-to-r from-[#8b5cf6] via-[#6366f1] to-[#3b82f6]
+                  opacity-90" />
+
+  <div className="absolute left-0 right-0 top-1/2 h-[10px] -translate-y-1/2
+                  blur-[18px] opacity-20
+                  bg-gradient-to-r from-[#8b5cf6] via-[#6366f1] to-[#3b82f6]" />
+</div>
+
+
     </section>
   );
 }

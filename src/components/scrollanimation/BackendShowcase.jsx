@@ -1,5 +1,5 @@
 // src/components/BackendShowcase.jsx
-import { memo } from "react";
+import { memo ,useCallback} from "react";
 import BackendAnimation from "../ui/BackendAnimation";
 import { ChevronsDown } from "lucide-react";
 import Galaxy from "../ui/Galaxy";
@@ -12,6 +12,16 @@ const BACKEND_TAGS = [
 ];
 
 function BackendShowcaseComponent() {
+  
+    const handleScrollTotechskills = useCallback(() => {
+      const target = document.getElementById("techskills");
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, []);
   return (
     <section
       id="backend"
@@ -109,7 +119,14 @@ function BackendShowcaseComponent() {
       <div className="pointer-events-none absolute bottom-6 inset-x-0 flex justify-center z-20">
         <div className="flex flex-col items-center gap-2 text-[10px] sm:text-xs text-slate-400">
           <div className="h-9 w-5 rounded-full border border-slate-600/70 flex items-center justify-center overflow-hidden">
-            <ChevronsDown className="h-4 w-4 text-slate-300 animate-bounce" />
+                        <button
+              type="button"
+              onClick={handleScrollTotechskills}
+              className="pointer-events-auto"
+              aria-label="Scroll to backend section"
+            >
+              <ChevronsDown className="h-4 w-4 text-slate-300 animate-bounce" />
+            </button>
           </div>
           <span className="tracking-[0.25em] uppercase">
             Scroll to explore

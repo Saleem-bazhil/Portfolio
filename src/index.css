@@ -62,7 +62,7 @@
     font-family: 'Poppins', sans-serif;
   }
 
-  h1,
+  /* h1,
   h2,
   h3,
   h4,
@@ -71,7 +71,7 @@
     font-family: 'Bebas Neue', cursive;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-  }
+  } */
 
   html {
     scroll-behavior: smooth;
@@ -347,4 +347,18 @@
     animation: none !important;
     transform: none !important;
   }
+}
+.space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: auto;
+  font-style: normal;
+}
+
+
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: auto;
+  font-style: normal;
 }

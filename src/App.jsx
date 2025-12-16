@@ -27,8 +27,8 @@ function App() {
         <Hero />
         <ScrollShowcase />
         <BackendShowcase />
-        <SkillLogoLoop />
-        <Skills />
+        {/* <SkillLogoLoop /> */}
+        {/* <Skills /> */}
         <About />
         <Project />
         <Contact />
